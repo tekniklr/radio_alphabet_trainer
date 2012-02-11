@@ -2,32 +2,35 @@ I used to have the radio alphabet memorized. That was awesome!
 
 I forgot it. Lamesauce!
 
-I am going to write a program, to run daily (or thereabouts), that will help me memorize this:
-* alpha
-* bravo
-* charlie
-* delta
-* echo
-* foxtrot
-* golf
-* hotel
-* india
-* juliet
-* kilo
-* lima
-* mike
-* november
-* oscar
-* papa
-* quebec
-* romeo
-* sierra
-* tango
-* uniform
-* victor
-* whisky
-* x-ray
-* yankee
-* zulu
+I wrote a program, that I intend to run daily (or thereabouts), that will help me memorize this:
+  * alpha
+  * bravo
+  * charlie
+  * delta
+  * echo
+  * foxtrot
+  * golf
+  * hotel
+  * india
+  * juliet
+  * kilo
+  * lima
+  * mike
+  * november
+  * oscar
+  * papa
+  * quebec
+  * romeo
+  * sierra
+  * tango
+  * uniform
+  * victor
+  * whisky
+  * x-ray
+  * yankee
+  * zulu
 
 It will do this by shuffling up the words (so I don't memorize the pattern, but the actual words), and prompting me with the starting letter. If I get it right, that letter is done. If not, a new letter will be asked, and the incorrect one will turn up later. This will repeat until all 26 letters are done, or until I force-quit like a whiny quitter butt.
+
+Todo:
+  * Memorize high score?
