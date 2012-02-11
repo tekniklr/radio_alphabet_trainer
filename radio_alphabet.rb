@@ -41,7 +41,7 @@ begin
     word = alphabet[letter]
     print "\n#{letter} => "
     answer = gets.strip
-    if answer.gsub(/\s/, '').downcase == word
+    if answer.downcase == word
       completed += 1
       puts "Answered #{completed}/26!"
       letters.shift
