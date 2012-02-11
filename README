@@ -32,5 +32,4 @@ I wrote a program, that I intend to run daily (or thereabouts), that will help m
 
 It will do this by shuffling up the words (so I don't memorize the pattern, but the actual words), and prompting me with the starting letter. If I get it right, that letter is done. If not, a new letter will be asked, and the incorrect one will turn up later. This will repeat until all 26 letters are done, or until I force-quit like a whiny quitter butt.
 
-Todo:
-  * Memorize high score?
+Scores will be appended to a hidden file in the working directory. The best time will be reported upon completion.
