@@ -33,24 +33,34 @@ letters = alphabet.keys.shuffle
 
 completed = 0
 failures = 0
+aborted = false
 
 start_time = Time.now
 
-while letters.count > 0 do
-  letter = letters.first
-  word = alphabet[letter]
-  print "\n#{letter} => "
-  answer = gets.strip
-  if answer.gsub(/\s/, '').downcase == word
-    completed += 1
-    puts "Answered #{completed}/26!"
-    letters.shift
-  else
-    failures += 1
-    puts "BRRRAAAAAP"
+begin
+  while letters.count > 0 do
+    letter = letters.first
+    word = alphabet[letter]
+    print "\n#{letter} => "
+    answer = gets.strip
+    if answer.gsub(/\s/, '').downcase == word
+      completed += 1
+      puts "Answered #{completed}/26!"
+      letters.shift
+    else
+      failures += 1
+      puts "BRRRAAAAAP"
+    end
+    letters and letters.shuffle!
   end
-  letters and letters.shuffle!
+rescue Interrupt
+  aborted = true
+  time_expended = (Time.now - start_time).to_i
+  puts "\n\nYou only answered #{completed} #{completed == 1 ? 'letter' : 'letters'}. It took you #{time_expended} seconds. You failed #{failures} #{failures == 1 ? 'time' : 'times'}."
+  puts "You run THAT fast?"
 end
 
-time_expended = (Time.now - start_time).to_i
-puts "\nYou radioed all letters in #{time_expended} seconds with #{failures} errors."
+unless aborted
+  time_expended = (Time.now - start_time).to_i
+  puts "\nYou answered all letters in #{time_expended} seconds with #{failures} #{failures == 1 ? 'error' : 'errors'}."
+end
