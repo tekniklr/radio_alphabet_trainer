@@ -32,7 +32,11 @@ alphabet = {
 letters = alphabet.keys.shuffle
 completed = 0
 failures = 0
-aborted = false
+
+puts "Enter the (American) radio alphabet word for the given letter."
+puts "To give up on a letter, enter 'FAIL'."
+puts "To give up entirely, hit ^C like the quitter you are."
+
 start_time = Time.now
 
 begin
@@ -43,25 +47,36 @@ begin
     answer = gets.strip
     if answer.downcase == word
       completed += 1
-      puts "Answered #{completed}/26!"
+      puts "WIN!"
+      letters.shift
+    elsif answer == 'FAIL'
+      puts "'#{word}' is the word you were looking for. Pantywaist."
       letters.shift
     else
       failures += 1
       puts "BRRRAAAAAP"
     end
-    letters and letters.shuffle!
+    if letters.count > 0
+      puts "#{alphabet.keys.count - (alphabet.keys.count - letters.count)} letters remain. 'FAIL' cheats, ^C quits."
+      letters.shuffle!
+    end
   end
 rescue Interrupt
-  aborted = true
   time_expended = (Time.now - start_time).to_i
   puts "\n\nYou only answered #{completed} #{completed == 1 ? 'letter' : 'letters'}. It took you #{time_expended} seconds. You failed #{failures} #{failures == 1 ? 'time' : 'times'}."
   puts "You run THAT fast?"
+  exit!
 end
 
-unless aborted
-  # only save a score if they didn't quit
+time_expended = (Time.now - start_time).to_i  
+
+if completed != alphabet.keys.count
+  puts "\n\nYou answered #{completed} #{completed == 1 ? 'letter' : 'letters'} and cheated on #{alphabet.keys.count - completed}."
+  puts "It took you #{time_expended} seconds."
+  puts "You failed #{failures} #{failures == 1 ? 'time' : 'times'}."
+else
+  # only save a score if they didn't quit or request any solutions
   
-  time_expended = (Time.now - start_time).to_i
   puts "\nYou answered all letters in #{time_expended} seconds with #{failures} #{failures == 1 ? 'error' : 'errors'}."
   
   # save score and find top score- append line to file of the format 
