@@ -87,7 +87,7 @@ else
   # initialize score file, find the best score in it, add the current 
   # score to it
   filename = '.radio_albhabet'
-  if !File.exists?(filename)
+  if !File.exist?(filename)
     require 'fileutils'
     FileUtils.touch(filename)
   end
